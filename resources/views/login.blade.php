@@ -4,6 +4,15 @@
             class="bg-white p-6 rounded-xl shadow-md w-full max-w-sm space-y-4">
             @csrf
 
+            @if ($errors->any())
+                <div>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <h2 class="text-2xl font-semibold text-center">Login</h2>
 
             <div>
