@@ -14,7 +14,7 @@ Route::view('dashboard', 'dashboard')
 // Prevent access to login/register pages for authenticated users
 Route::middleware('guest')->group(function () {
     Route::view('login', 'login')->name('login');
-    Route::post('/login', LoginController::class)->name('login-attempt');
+    Route::post('/login', LoginController::class)->middleware('throttle:5,1')->name('login-attempt');
 
     Route::view('register', 'register')->name('register');
     Route::post('/register', RegisterController::class)->name('register.store');
